@@ -29,6 +29,7 @@ shinyUI(fluidPage(
         mainPanel(
             plotOutput("distPlot"),
             tags$p("App created by Anoosha")
+            
         )
     )
 ))
