@@ -14,7 +14,14 @@ shinyUI(fluidPage(
 
     # Application title
     titlePanel("Old Faithful Geyser Data"),
-
+    tags$div(class="header", checked=NA,
+             list(
+                 tags$p("Below is a Old Faithful Geyser data"),
+                 tags$strong("On left side of the panel, You can see a Histogram"),"!"
+             )
+    ),
+    
+    
     # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
@@ -26,17 +33,32 @@ shinyUI(fluidPage(
         ),
 
         # Show a plot of the generated distribution
+        
         mainPanel(
             plotOutput("distPlot"),
-            tags$strong("bold"),
-            tags$i("italics"),
+            tags$i("Input/Output Data:"),
             tags$ul(
-                tags$li("item1"),
-                tags$li("item2"),
+                tags$li("Bins based on input"),
+                tags$li("Histogram with the specified number of bins"),
             ),
-            # tags$img(src="https://shiny.rstudio.com/images/examples/01_hello.png")
-            tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png")
             
-        )
+            
+            tags$div(class="header", checked=NA,
+                     list(
+                         tags$p("If you want to visit my R-shiny App at my GitHub account:"),
+                         tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", tags$i("Click Here for GitHub!")),
+                         tags$br(),
+                         tags$br(),
+                         tags$strong("Thank you"),"!"
+                     )
+            ),
+            
+            tags$br(),
+            tags$br(),
+            tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png",width="100", height="100",style="border:5px solid black"),
+            tags$img(src="R_Shiny.png", width="100", height="100",style="border:5px dotted blue"),
+            tags$img(src="https://miro.medium.com/max/1400/1*cuOlMPTUQ3cTY7ldb-usKw.png",width="100", height="100",style="border:5px solid red")
+            #tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", "Please Click Here for GitHub"),
+                        )
     )
 ))
