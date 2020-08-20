@@ -13,16 +13,37 @@ library(shiny)
 shinyUI(fluidPage(
 
     # Application title
-    titlePanel("Old Faithful Geyser Data"),
+    tags$img(src="https://www.edureka.co/blog/wp-content/uploads/2019/09/R-Shiny-Tutorial.jpg",width="300", height="100",style="border:5px dotted teal",style="float:right"),
+    
+    titlePanel(h5("Old Faithful Geyser Data")),
     tags$div(class="header", checked=NA,
              list(
-                 tags$p("Below is a Old Faithful Geyser data"),
-                 tags$strong("On left side of the panel, You can see a Histogram"),"!"
+                 tags$p("Below is a Old Faithful Geyser data", tags$strong("On left side of the panel, You can see a Histogram")),
+                 ""
              )
     ),
     
-    
+    tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png",width="50", height="50",style="border:5px solid black"),
+    tags$img(src="R_Shiny.png", width="50", height="50",style="border:5px dotted blue"),
+    tags$img(src="https://miro.medium.com/max/1400/1*cuOlMPTUQ3cTY7ldb-usKw.png",width="50", height="50",style="border:5px solid red"),
+    #tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", "Please Click Here for GitHub"),
+    tags$div(class="header", checked=NA,
+             list(
+                 tags$br(),
+                 tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", tags$i("Click Here for GitHub!")),
+                 ""
+             )
+    ),
+    tags$br(),
     # Sidebar with a slider input for number of bins
+    tabsetPanel(
+        tabPanel("Input/Output Plot", verbatimTextOutput("Plot")), 
+        tabPanel("Summary"), 
+        tabPanel("Table", tableOutput("table"))
+    
+        ),
+    
+    
     sidebarLayout(
         sidebarPanel(
             sliderInput("bins",
@@ -32,10 +53,20 @@ shinyUI(fluidPage(
                         value = 30)
         ),
 
+
         # Show a plot of the generated distribution
-        
+       
         mainPanel(
-            plotOutput("distPlot"),
+            
+            navbarPage("Navbar!",
+                       tabPanel("Plot",plotOutput("distPlot"),
+                       ),
+                        tabPanel("Plot2",plotOutput("distPlot2"),
+                        )
+                        ),
+                                
+                                   
+            
             tags$i("Input/Output Data:"),
             tags$ul(
                 tags$li("Bins based on input"),
@@ -43,22 +74,13 @@ shinyUI(fluidPage(
             ),
             
             
-            tags$div(class="header", checked=NA,
-                     list(
-                         tags$p("If you want to visit my R-shiny App at my GitHub account:"),
-                         tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", tags$i("Click Here for GitHub!")),
-                         tags$br(),
-                         tags$br(),
-                         tags$strong("Thank you"),"!"
-                     )
-            ),
             
-            tags$br(),
-            tags$br(),
-            tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png",width="100", height="100",style="border:5px solid black"),
-            tags$img(src="R_Shiny.png", width="100", height="100",style="border:5px dotted blue"),
-            tags$img(src="https://miro.medium.com/max/1400/1*cuOlMPTUQ3cTY7ldb-usKw.png",width="100", height="100",style="border:5px solid red")
-            #tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", "Please Click Here for GitHub"),
+            
+          
+            
                         )
-    )
+    ),
+    tags$footer("My footer", align = "center")
+    
 ))
+
