@@ -11,10 +11,17 @@ library(shiny)
 
 # Define UI for application that draws a histogram
 shinyUI(fluidPage(
-
+    
+    #  Added an image in new row 
     fluidRow(
-        tags$img(src="https://www.edureka.co/blog/wp-content/uploads/2019/09/R-Shiny-Tutorial.jpg",width="200", height="90",style="border:5px dotted teal",style="float:right")
+        tags$img(src="https://www.edureka.co/blog/wp-content/uploads/2019/09/R-Shiny-Tutorial.jpg",width="100", height="90",style="border:5px dotted teal",style="float:right"),
+        tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png",width="100", height="90",style="border:5px solid black"),
+        tags$img(src="R_Shiny.png", width="100", height="90",style="border:5px dotted blue"),
+        tags$img(src="https://miro.medium.com/max/1400/1*cuOlMPTUQ3cTY7ldb-usKw.png",width="100", height="90",style="border:5px solid red"),
+        #tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", "Please Click Here for GitHub"),
+        tags$br(),
     ),
+    
     
     # Application title
     titlePanel(h5("Old Faithful Geyser Data")),
@@ -25,21 +32,15 @@ shinyUI(fluidPage(
              )
     ),
     
-    tags$img(src="https://www.analyticsvidhya.com/wp-content/uploads/2016/10/shiny.png",width="40", height="40",style="border:5px solid black"),
-    tags$img(src="R_Shiny.png", width="40", height="40",style="border:5px dotted blue"),
-    tags$img(src="https://miro.medium.com/max/1400/1*cuOlMPTUQ3cTY7ldb-usKw.png",width="40", height="40",style="border:5px solid red"),
-    #tags$a(href="github.com/Anoosha-Sehar/R-Shiny_Course", "Please Click Here for GitHub"),
- 
-    tags$br(),
-    # Sidebar with a slider input for number of bins
+    #Added few tabs in App
     tabsetPanel(
-        tabPanel("Input/Output Plot", verbatimTextOutput("Plot")), 
+        tabPanel("Input Data", verbatimTextOutput("Plot")), 
         tabPanel("Summary"), 
         tabPanel("Table", tableOutput("table"))
     
         ),
     
-    
+    # Sidebar with a slider input for number of bins
     sidebarLayout(
         sidebarPanel(
             sliderInput("bins",
@@ -53,34 +54,36 @@ shinyUI(fluidPage(
         # Show a plot of the generated distribution
        
         mainPanel(
+            
             tags$i("Input/Output Data:"),
             tags$ul(
-                tags$li("Bins based on input"),
-                tags$li("Histogram with the specified number of bins"),
+                tags$li("Input: Bins based on input"),
+                tags$li("Output: Histogram with the specified number of bins"),
             ),
-            navbarPage("Navbar!",
-                       tabPanel("Plot",
+         
+        # Navigation Bar to add both plots.   
+            
+         navbarPage("Histogram Plots",fluid=TRUE,
+                       tabPanel("Plot1",
                                 plotOutput("distPlot"),
                                ),
                         tabPanel("Plot2",plotOutput("distPlot2"),
                         )
                         ),
-          
-            
-                        )
+                        
+            )
     ),
     
     fluidRow(
-        column(4,
+        column(4,align = "center",
                tags$p("Anoosha Sehar")),
-        column(4,
+        
+        column(4,align = "center",
                tags$a(href="mailto:anoosha_sehar@ymail.com","Email me")),
-        #tags$br(),
-        column(4,
+        
+        column(4,align = "center",
                tags$a(href="https://www.linkedin.com/in/anoosha-sehar-53770a1b1/"," LinkedIn : Anoosha")),
         
     )
-    #tags$footer("My footer", align = "center")
-    
 ))
 
