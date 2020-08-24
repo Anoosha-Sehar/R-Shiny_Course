@@ -4,7 +4,8 @@ server <- function(input, output) {
     values <- reactive({
         if (input$button)
         {
-            return(input$weight/(input$height * input$height))
+            return(round(input$weight/(input$height * input$height),digit=2))
+          
         }
         
         else
