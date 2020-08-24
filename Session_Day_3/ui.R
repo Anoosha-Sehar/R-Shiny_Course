@@ -1,24 +1,20 @@
-#
-# This is the user-interface definition of a Shiny web application. You can
-# run the application by clicking 'Run App' above.
-#
-# Find out more about building applications with Shiny here:
-#
-#    http://shiny.rstudio.com/
-#
-
 library(shiny)
 
 ui <- fluidPage(
-    titlePanel("Reactive values"),
+    titlePanel("Body Mass Index (BMI) Calculation:"),
     sidebarLayout(
         sidebarPanel(
             #add inputs here 
-            sliderInput("slider", "choose a number", min=1, max=20, value=10),
-            checkboxInput("checkbox", "Multiply by 10?"),
-        ),
+            numericInput("weight", label = "Enter your Weight (Kg): ", value=0,max = 200),
+            numericInput("height",label = "Enter your height (m): ",value=0, max = 200),
+            actionButton("button",label = "Calculate your BMI")
+        
+            
+            ),
+        
         mainPanel(
             #add output here
-            plotOutput("plot")
+            textOutput("calculated_BMI"),
+            textOutput("chart_BMI")
         )
     )) 
